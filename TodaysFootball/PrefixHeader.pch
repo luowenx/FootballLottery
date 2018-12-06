@@ -1,0 +1,82 @@
+//
+//  PrefixHeader.pch
+//  TodaysFootball
+//
+//  Created by lequwuxian1 on 2017/11/22.
+//  Copyright © 2017年 lequwuxian. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#define UMDEBUG 1
+
+#if UMDEBUG
+#define LQLog(FORMAT, ...) NSLog(FORMAT, ##__VA_ARGS__)
+#else
+#define LQLog(...)
+#endif
+
+#define __DEVELOP     1 //开发环境
+#define __TEST              2 // 测试环境
+#define __OFFICAIL     3  // 线上环境
+
+#ifndef __Environmental
+#define __Environmental __OFFICAIL
+#endif
+
+
+#if (__Environmental == __DEVELOP)
+
+#define lqUrl @"http://139.196.188.229:8034"
+#define LQWebURL @"https://hong.lequ.net"
+
+#elif (__Environmental == __TEST)
+
+#define lqUrl @"http://139.196.188.229:8034"
+#define LQWebURL @"https://hong.lequ.net"
+
+#elif (__Environmental == __OFFICAIL)
+
+#define lqUrl  @"https://lw.lequ.net"
+#define LQWebURL @"https://hong.lequ.net"
+
+#endif
+
+#define LQWebPramSuffix \
+[@"?app=tf&platform=iOS&appStatus=" stringByAppendingString: @((int)[LQAppConfiger shareInstance].appStatus).stringValue]
+
+#define kLQAPPKEY  @"lwapp01"
+#define LQPlaceholderIcon  imageWithName(@"头像")
+#define LQPlaceholderTeamIcon  imageWithName(@"team_placeholder")
+#define LQPlaceholderInformationIcon  imageWithName(@"ioc_placeholder_info")
+
+//#import "codeObfuscation.h"
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import <CoreText/CoreText.h>
+#import "LQButton.h"
+#import "MJRefresh.h"
+#import "BANetManager.h"
+#import "UIImageView+WebCache.h"
+
+#import "ReactiveCocoa.h"
+
+#import "UIColor+Standard.h"
+#import "LQFLmacro.h"
+#import "LQStandard.h"
+#import "LQLotteryWinnerHeader.h"
+#import "LQNotificationName.h"
+#import "LQSCommodDef.h"
+#import "UIView+ActivityIndicatorView.h"
+
+#import "LQAnalysisProtocol.h"
+#import "LQNetResponse.h"
+#import "LQHttpRequest.h"
+#import "FilePathConfig.h"
+#import "LQUserManager.h"
+#import "LQAppConfiger.h"
+
+#endif /* PrefixHeader_pch */
